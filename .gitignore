@@ -1,0 +1,10 @@
+target/
+reference/
+image/
+etc/
+img/
+mp3/
+fonts/
+images/
+resource/
+/.metadata/

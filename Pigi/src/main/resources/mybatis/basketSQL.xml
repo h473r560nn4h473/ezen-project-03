@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="basket">
+
+	<!-- 상품ID BIDX를 갖는 basket 정보  -->
+	<select id="selectBasketBIDX" parameterType="hashmap" resultType="hashmap">
+	<![CDATA[
+		SELECT
+			* 
+		FROM
+			BASKET 
+		WHERE
+			BIDX=#{BIDX}
+	]]>
+	</select>
+	
+	<!-- 상품ID BID를 갖는 basket 정보  -->
+	<select id="selectBasketBID" parameterType="hashmap" resultType="hashmap">
+	<![CDATA[
+		SELECT
+			* 
+		FROM
+			BASKET 
+		WHERE
+			BID=#{BID}
+			AND
+			BEMAIL=#{BEMAIL}
+	]]>
+	</select>
+
+	<!-- BEMAIL 사용자가 가진 장바구니번호 -->
+	<select id="selectBasketBnumberMaxBemail" parameterType="hashmap" resultType="hashmap">
+	<![CDATA[
+		SELECT
+			MAX(BNUMBER) MAX
+		FROM
+			BASKET 
+		WHERE
+			BEMAIL=#{BEMAIL}
+	]]>
+	</select>
+	
+	<!-- 장바구니의 테이블의 BNUMBER 최대값 -->
+	<select id="selectBasketBnumberMax" resultType="hashmap">
+	<![CDATA[
+		SELECT
+			MAX(BNUMBER) MAX
+		FROM
+			BASKET
+	]]>
+	</select>
+	
+	<!-- basketList 장바구니 리스트) -->
+	<select id="basketList" parameterType="hashmap" resultType="hashmap">
+	<![CDATA[
+		SELECT
+			* 
+		FROM
+			BASKET 
+		WHERE
+			BEMAIL=#{EMAIL}
+	]]>
+	</select>	
+	
+	<!-- insertBasket (장바구니 추가 기능) -->
+	<insert id="insertBasket" parameterType="hashmap">
+	<![CDATA[
+		INSERT INTO
+			BASKET
+		VALUES(
+			BIDX_SEQ.NEXTVAL,
+			#{BNUMBER},
+			#{BNAME},
+			#{BID},
+			#{BPRICE},
+			#{BSALE},
+			#{BEMAIL},
+			#{BCOUNT}
+		)	
+	]]>
+	</insert>
+	
+	<!-- updateBasket (장바구니 수정기능) -->
+	<update id="updateBasket" parameterType="hashmap">
+	<![CDATA[
+		UPDATE
+			BASKET
+		SET
+			BCOUNT = #{BCOUNT} 
+		WHERE
+			BIDX = #{BIDX}
+	]]>
+	</update>
+
+	<!-- deleteBasket (장바구니 삭제기능) -->
+	<delete id="deleteBasket" parameterType="hashmap">
+	<![CDATA[
+		DELETE
+			FROM BASKET
+		WHERE
+			BIDX = #{BIDX}
+	]]>
+	</delete>
+	
+	<!-- 장바구니에서 상품ID가 BID인 모든 장바구니 삭제 -->
+	<delete id="deleteBasketBid" parameterType="hashmap">
+		DELETE
+			FROM BASKET
+		WHERE
+			BID = #{BID}
+	</delete>
+
+</mapper>

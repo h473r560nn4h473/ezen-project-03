@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="event">
+
+<!-- selectEventId -->
+<select id="selectEventId" parameterType="String" resultType="pigi.model.PIGI_EVENT">
+	select *
+	from 
+		PIGI_EVENT
+	WHERE
+		EMAIL = #{EMAIL}
+</select>
+
+<!-- pointIdListPaging -->
+<select id="pointIdListPaging" parameterType="hashmap" resultType="hashmap">
+	select * 
+	from (
+		select
+			 POINT_KEY, EMAIL, PIGI_POINT, ROULETTEDATE, ROWNUM R
+		from (
+			select
+				 POINT_KEY, EMAIL, PIGI_POINT, ROULETTEDATE
+			from 
+				PIGI_POINT
+			where 
+				EMAIL = #{EMAIL}
+			order by ROULETTEDATE DESC
+		)
+		order by R ASC
+	)
+	where
+		R between #{START} and #{END}
+</select>
+
+<!-- pointIdListSearchPaging -->
+<select id="pointIdListSearchPaging" parameterType="hashmap" resultType="hashmap">
+	select * 
+	from (
+		select
+			 POINT_KEY, EMAIL, PIGI_POINT, ROULETTEDATE, ROWNUM R
+		from (
+			select
+				 POINT_KEY, EMAIL, PIGI_POINT, ROULETTEDATE
+			from 
+				PIGI_POINT
+			where 
+				EMAIL = #{EMAIL}
+				and
+				ROULETTEDATE BETWEEN #{MINDATE} AND #{MAXDATE}
+			order by ROULETTEDATE DESC
+		)
+		order by R ASC
+	)
+	where
+		R between #{START} and #{END}
+</select>
+
+<!-- pointIdCount -->
+<select id="pointIdCount" parameterType="String" resultType="int">
+	select
+		count(*)
+	from
+		PIGI_POINT
+	where
+		EMAIL = #{EMAIL}
+</select>
+
+<!-- pointIdSearchCount -->
+<select id="pointIdSearchCount" parameterType="hashmap" resultType="int">
+	select
+		count(*)
+	from 
+		PIGI_POINT
+	where 
+		EMAIL = #{EMAIL}
+		and
+		ROULETTEDATE BETWEEN #{MINDATE} AND #{MAXDATE}
+</select>
+
+<!-- insertPointId -->
+<insert id="insertPointId" parameterType="pigi.model.PIGI_EVENT">
+	insert into
+		PIGI_EVENT
+	values(
+		EVENT_KEY_SEQ.NEXTVAL,
+		#{EMAIL},
+		#{PIGI_POINT},
+		'N',
+		'N',
+		'N',
+		'N',
+		'N',
+		'00000000'
+	)
+</insert>
+
+<!-- updatePointId -->
+<update id="updatePointId" parameterType="pigi.model.PIGI_EVENT">
+	update
+		PIGI_EVENT
+	set
+		PIGI_POINT = #{PIGI_POINT}
+	where 
+		EMAIL = #{EMAIL}
+</update>
+
+<!-- updateCouponId -->
+<update id="updateCouponId" parameterType="pigi.model.PIGI_EVENT">
+	update
+		PIGI_EVENT
+	set
+		COUPON1K = #{COUPON1K},
+		COUPON2K = #{COUPON2K},
+		COUPON3K = #{COUPON3K},
+		COUPON5K = #{COUPON5K},
+		COUPON10K = #{COUPON10K}
+	where 
+		EMAIL = #{EMAIL}
+</update>
+
+<!-- updateRoulettedateId -->
+<update id="updateRoulettedateId" parameterType="pigi.model.PIGI_EVENT">
+	update
+		PIGI_EVENT
+	set
+		ROULETTEDATE = #{ROULETTEDATE}
+	where 
+		EMAIL = #{EMAIL}
+</update>
+
+<!-- selectPaymentOID -->
+<select id="selectPaymentOID" parameterType="int" resultType="pigi.model.Payment">
+	select
+		*
+	from
+		PAYMENT
+	where
+		OID = #{OID}
+</select>
+
+<!-- selectPaymentOBNUMBER -->
+<select id="selectPaymentOBNUMER" parameterType="int" resultType="pigi.model.Payment">
+	select
+		*
+	from
+		PAYMENT
+	where
+		OBNUMBER = #{OBNUMBER}
+</select>
+
+<!-- insertPayment -->
+<insert id="insertPayment" parameterType="pigi.model.Payment">
+	insert into
+		PAYMENT
+	values(
+		PAYMENTIDX_SEQ.NEXTVAL,
+		<if test="OID == -1">
+			null,
+		</if>
+		<if test="OID != -1">
+			#{OID},
+		</if>
+		<if test="OBNUMBER == -1">
+			null,
+		</if>
+		<if test="OBNUMBER != -1">
+			#{OBNUMBER},
+		</if>
+		#{TOTALSUM},
+		#{TOTALPAYMENT},
+		#{COUPON},
+		#{POINT}
+	)
+</insert>
+
+<!-- selectLastPigiPointID -->
+<select id="selectLastPigiPointID" parameterType="String" resultType="pigi.model.PIGI_POINT">
+	select
+		*
+	from
+		PIGI_POINT
+	where 
+		POINT_KEY =
+		(
+			select 
+				MAX(POINT_KEY)
+			from
+				PIGI_POINT
+			where
+				EMAIL = #{EMAIL}
+		)
+</select>
+
+<!-- insertPigiPointID : PIGI_POINT 테이블에 입력 -->
+<insert id="insertPigiPointID" parameterType="pigi.model.PIGI_POINT">
+	insert into
+		PIGI_POINT
+	values(
+		POINT_KEY_SEQ.NEXTVAL,
+		#{EMAIL},
+		#{PIGI_POINT},
+		#{ROULETTEDATE}
+	)
+</insert>
+
+</mapper>

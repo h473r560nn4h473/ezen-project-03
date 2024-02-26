@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+       
+<tiles-definitions>
+
+	<definition name="main_layout" template="/WEB-INF/jsp/layout/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/jsp/layout/main_header.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/layout/main_footer.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/main.jsp" />
+	</definition>
+	
+	<!-- Admin -->
+	
+	<definition name="admin_layout" template="/WEB-INF/jsp/layout/admin_layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/jsp/layout/main_header.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/layout/main_footer.jsp" />
+		<put-attribute name="left" value="/WEB-INF/jsp/layout/admin_left.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/adminMain.jsp" />
+	</definition>
+
+	<definition name="adminMainForm" extends="admin_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/adminMainForm.jsp" />
+	</definition>
+	
+	
+	<!-- Admin Member -->
+	
+	<definition name="memberDetail" extends="admin_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/member/memberDetail.jsp" />
+	</definition>
+	
+	<definition name="memberList" extends="admin_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/member/memberList.jsp" />
+	</definition>
+	
+	
+	<!-- Admin Product -->
+
+	<definition name="adminPList" extends="admin_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/product/adminPList.jsp" />
+	</definition>
+	
+	<definition name="adminPListAjax" extends="admin_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/product/adminPListAjax.jsp" />
+	</definition>
+	
+	<definition name="adminPModifyForm" extends="admin_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/product/adminPModifyForm.jsp" />
+	</definition>
+	
+	<definition name="adminPWriteForm" extends="admin_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/product/adminPWriteForm.jsp" />
+	</definition>
+	
+	<definition name="adminSellList" extends="admin_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/product/adminSellList.jsp" />
+	</definition>
+	
+	
+	<!-- Admin Order -->
+	
+	<definition name="adminOrderDetail" extends="admin_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/order/adminOrderDetail.jsp" />
+	</definition>
+	
+	<definition name="adminOrderList" extends="admin_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/order/adminOrderList.jsp" />
+	</definition>
+	
+	
+	<!-- Admin Community -->
+	
+	<!-- Notice -->
+	
+	<definition name="adminNoticeDetail" extends="admin_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/community/adminNoticeDetail.jsp" />
+	</definition>
+	
+	<definition name="adminNoticeList" extends="admin_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/community/adminNoticeList.jsp" />
+	</definition>
+	
+	<definition name="adminNoticeListAjax" extends="admin_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/community/adminNoticeListAjax.jsp" />
+	</definition>
+	
+	<definition name="adminNoticeModifyForm" extends="admin_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/community/adminNoticeModifyForm.jsp" />
+	</definition>
+	
+	<definition name="adminNoticeWriteForm" extends="admin_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/community/adminNoticeWriteForm.jsp" />
+	</definition>
+
+	<!-- Qna -->
+
+	<definition name="adminQnaDetail" extends="admin_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/community/adminQnaDetail.jsp" />
+	</definition>
+	
+	<definition name="adminQnaDetailAjax" extends="admin_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/community/adminQnaDetailAjax.jsp" />
+	</definition>
+
+	<definition name="adminQnaList" extends="admin_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/community/adminQnaList.jsp" />
+	</definition>
+	
+	<definition name="adminQnaListAjax" extends="admin_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/community/adminQnaListAjax.jsp" />
+	</definition>
+	
+	<!-- Review -->	
+	
+	<definition name="adminReviewList" extends="admin_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/community/adminReviewList.jsp" />
+	</definition>
+	
+	<definition name="adminReviewListAjax" extends="admin_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/community/adminReviewListAjax.jsp" />
+	</definition>
+	
+		
+	<!-- Member -->
+	
+	<definition name="findId" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/member/findId.jsp" />
+	</definition>
+	
+	<definition name="findIdResult" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/member/findIdResult.jsp" />
+	</definition>
+
+	<definition name="findPw" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/member/findPw.jsp" />
+	</definition>
+	
+	<definition name="findPwResult" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/member/findPwResult.jsp" />
+	</definition>
+	
+	<definition name="joinForm" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/member/joinForm.jsp" />
+	</definition>
+	
+	<definition name="joinFormAjax" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/member/joinFormAjax.jsp" />
+	</definition>
+
+	<definition name="loginForm" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/member/loginForm.jsp" />
+	</definition>
+
+	<definition name="myInfoModifyForm" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/member/myInfoModifyForm.jsp" />
+	</definition>
+	
+	<definition name="myInfoOrder" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/member/myInfoOrder.jsp" />
+	</definition>
+	
+	<definition name="myInfoQna" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/member/myInfoQna.jsp" />
+	</definition>
+	
+	<definition name="myInfoReview" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/member/myInfoReview.jsp" />
+	</definition>
+	
+	<definition name="myPage" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/member/myPage.jsp" />
+	</definition>
+
+	
+	<!-- Product -->
+
+	<definition name="allList" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/product/allList.jsp" />
+	</definition>
+	
+	<definition name="aclList" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/product/aclList.jsp" />
+	</definition>
+	
+	<definition name="etcList" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/product/etcList.jsp" />
+	</definition>
+	
+	<definition name="pDetail" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/product/pDetail.jsp" />
+	</definition>
+	
+	<definition name="pDetailAjax" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/product/pDetailAjax.jsp" />
+	</definition>
+	
+	<definition name="pReviewForm" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/product/pReviewForm.jsp" />
+	</definition>
+	
+	
+	<!-- Basket -->
+	
+	<definition name="basketList" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/basket/basketList.jsp" />
+	</definition>
+	
+	<definition name="basketListAjax" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/basket/basketListAjax.jsp" />
+	</definition>
+	
+	
+	<!-- Order -->
+	
+	<definition name="basketOrderForm" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/order/basketOrderForm.jsp" />
+	</definition>
+	
+	<definition name="pOrderForm" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/order/pOrderForm.jsp" />
+	</definition>
+	
+	<definition name="orderResult" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/order/orderResult.jsp" />
+	</definition>
+	
+	
+	<!-- Community -->
+	
+	<definition name="noticeDetail" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/community/noticeDetail.jsp" />
+	</definition>
+	
+	<definition name="noticeList" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/community/noticeList.jsp" />
+	</definition>
+	
+	<definition name="qnaDetail" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/community/qnaDetail.jsp" />
+	</definition>
+	
+	<definition name="qnaForm" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/community/qnaForm.jsp" />
+	</definition>
+	
+	<definition name="qnaList" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/community/qnaList.jsp" />
+	</definition>
+	
+	<!-- Event -->
+	<definition name="point" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/event/point.jsp" />
+	</definition>
+	
+	<definition name="coupon" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/event/coupon.jsp" />
+	</definition>
+	
+	<definition name="roulette" extends="main_layout">		
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/event/roulette.jsp" />
+	</definition>
+	
+	
+</tiles-definitions>

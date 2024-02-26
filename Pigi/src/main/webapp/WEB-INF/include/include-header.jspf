@@ -1,0 +1,47 @@
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="resource/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="resource/css/animate.css">
+    
+    <link rel="stylesheet" href="resource/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="resource/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="resource/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="resource/css/aos.css">
+
+    <link rel="stylesheet" href="resource/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="resource/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="resource/css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="resource/css/flaticon.css">
+    <link rel="stylesheet" href="resource/css/icomoon.css">
+    <link rel="stylesheet" href="resource/css/style.css">
+    <link rel="stylesheet" 
+    	href="${pageContext.request.contextPath}/resource/css/bootstrap.min.css">
+    	
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	
+	<script src="resource/js/jquery.min.js"></script>
+	<script src="resource/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="resource/js/popper.min.js"></script>
+	<script src="resource/js/bootstrap.min.js"></script>
+	<script src="resource/js/jquery.easing.1.3.js"></script>
+	<script src="resource/js/jquery.waypoints.min.js"></script>
+	<script src="resource/js/jquery.stellar.min.js"></script>
+	<script src="resource/js/owl.carousel.min.js"></script>
+	<script src="resource/js/jquery.magnific-popup.min.js"></script>
+	<script src="resource/js/aos.js"></script>
+	<script src="resource/js/jquery.animateNumber.min.js"></script>
+	<script src="resource/js/bootstrap-datepicker.js"></script>
+	<script src="resource/js/scrollax.min.js"></script>
+	<script src="resource/js/main.js"></script>
+</head>

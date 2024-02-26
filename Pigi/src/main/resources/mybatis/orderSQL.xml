@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="order">
+
+	<!-- selectOrderOID (주문번호로 주문 정보 조회) -->
+	<select id="selectOrderOId" parameterType="hashmap" resultType="hashmap">
+	<![CDATA[
+		SELECT
+			* 
+		FROM
+			ORDERCOMMAND 
+		WHERE
+			OID = #{OID}
+	]]>
+	</select>
+	
+	<!-- selectOrderOBNUMBER (장바구니번호로 주문 정보 조회) -->
+	<select id="selectOrderOBNumber" parameterType="hashmap" resultType="hashmap"> 
+	<![CDATA[
+		SELECT
+			* 
+		FROM
+			ORDERCOMMAND 
+		WHERE
+			OBNUMBER = #{OBNUMBER}
+	]]>
+	</select>
+	
+	<!-- 주문 테이블의 OBNUMBER 최대값 -->
+	<select id="selectOrderOBnumberMax" resultType="hashmap">
+	<![CDATA[
+		SELECT
+			MAX(OBNUMBER) MAX
+		FROM
+			ORDERCOMMAND
+	]]>
+	</select>
+	
+	<!-- selectOIDMax (가장 마지막에 주문한 주문의 OID값) -->
+	<select id="selectOIDMax" resultType="hashmap">
+	<![CDATA[
+		SELECT
+			MAX(OID) MAX
+		FROM
+			ORDERCOMMAND
+	]]>
+	</select>	
+
+	<!-- selectOrderMemberId (주문자:Email로 주문 정보 조회) -->
+	<select id="selectOrderMemberId" parameterType="hashmap" resultType="hashmap">
+	<![CDATA[
+		SELECT
+			* 
+		FROM
+			ORDERCOMMAND 
+		WHERE
+			OMAIL=#{EMAIL}
+	]]>
+	</select>
+
+	<!-- orderList (주문 정보 리스트) -->
+	<select id="orderList" resultType="hashmap">
+	<![CDATA[
+		SELECT
+			* 
+		FROM
+			ORDERCOMMAND
+		ORDER BY
+		OID DESC
+	]]>
+	</select>
+	
+	<!-- orderListSearch (주문 정보 리스트 검색) -->
+	<select id="orderListSearch" parameterType="hashmap" resultType="hashmap">
+		SELECT
+			*
+		FROM
+			ORDERCOMMAND
+		<where>
+			<if test="CONDITION!=NULL">
+				<if test="CONDITION.equals('OMAIL')">
+					OMAIL LIKE '%'||#{KEYWORD}||'%'
+				</if>
+				<if test="CONDITION.equals('OID')">
+					OID = #{KEYWORD}
+				</if>
+				<if test="CONDITION.equals('OPRODUCT')">
+					OPRODUCT LIKE '%'||#{KEYWORD}||'%'
+				</if>
+				<if test="CONDITION.equals('OSTATUS')">
+					OSTATUS = #{KEYWORD}
+				</if>
+			</if>
+		</where>		
+	</select>
+	
+	<!-- insertOrderDirect (상품 바로 구매정보 입력) -->
+	<insert id="insertOrderDirect" parameterType="hashmap">
+	<![CDATA[
+		INSERT INTO
+			ORDERCOMMAND
+		VALUES(
+			OID_SEQ.NEXTVAL,
+			NULL,
+			#{OMAIL},
+			#{ONAME},
+			SYSDATE,
+			#{OPID},
+			#{OPRODUCT},
+			#{OCOUNT},
+			#{OPRICE},
+			#{OSALE},
+			#{OTOTAL},
+			#{OMOBILE},
+			#{OPOSTCODE},
+			#{OADDRESS1},
+			#{OADDRESS2},
+			'배송전',
+			'100254889564'
+		)
+	]]>
+	</insert>
+
+	<!-- insertOrderBasket (장바구니 구매정보 입력) -->
+	<insert id="insertOrderBasket" parameterType="hashmap">
+	<![CDATA[
+		INSERT INTO
+			ORDERCOMMAND 
+		VALUES(
+			OID_SEQ.NEXTVAL,
+			#{OBNUMBER},
+			#{OMAIL},
+			#{ONAME},
+			SYSDATE,
+			#{OPID},
+			#{OPRODUCT},
+			#{OCOUNT},
+			#{OPRICE},
+			#{OSALE},
+			#{OTOTAL},
+			#{OMOBILE},
+			#{OPOSTCODE},
+			#{OADDRESS1},
+			#{OADDRESS2},
+			'배송전',
+			'100254889564'
+		)
+	]]>
+	</insert>
+	
+	<!-- updateOrderId (주문 정보 수정) -->
+	<update id="updateOrderId" parameterType="hashmap">
+	<![CDATA[
+		UPDATE
+			ORDERCOMMAND
+		SET
+			OSTATUS=#{OSTATUS}
+		WHERE
+			OID=#{OID}
+	]]>
+	</update>
+
+</mapper>
